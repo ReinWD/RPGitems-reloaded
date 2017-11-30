@@ -1,10 +1,11 @@
 package think.rpgitems.power.types;
 
-import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import think.rpgitems.power.sound.TriggerType;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 public interface PowerSoundable {
-
-    ArrayList<Sound> getSoundList();
+    void playSound(TriggerType type, Player player, float volume, float pitch);
+    <T extends Map> T getSoundMap();
 }
