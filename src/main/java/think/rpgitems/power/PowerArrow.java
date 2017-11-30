@@ -51,7 +51,7 @@ public class PowerArrow extends Power implements PowerRightClick {
         if (!item.checkPermission(player, true)) return;
         if (!checkCooldown(player, cooldownTime, true)) return;
         if (!item.consumeDurability(stack, consumption)) return;
-        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1.0f, 1.0f);
+        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1.0f, 1.0f);//TODO: Arrow sound
         Arrow arrow = player.launchProjectile(Arrow.class);
         Events.rpgProjectiles.put(arrow.getEntityId(), item.getID());
         Events.removeArrows.add(arrow.getEntityId());

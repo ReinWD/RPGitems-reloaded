@@ -58,7 +58,7 @@ public class PowerTorch extends Power implements PowerRightClick {
         if (!item.checkPermission(player, true)) return;
         if (!checkCooldown(player, cooldownTime, true)) return;
         if (!item.consumeDurability(stack, consumption)) return;
-        player.playSound(player.getLocation(), Sound.ITEM_FLINTANDSTEEL_USE, 1.0f, 0.8f);
+        player.playSound(player.getLocation(), Sound.ITEM_FLINTANDSTEEL_USE, 1.0f, 0.8f);//TODO:Torch
         final FallingBlock block = player.getWorld().spawnFallingBlock(player.getLocation().add(0, 1.8, 0), Material.TORCH, (byte) 0);
         block.setVelocity(player.getLocation().getDirection().multiply(2d));
         block.setDropItem(false);
@@ -105,7 +105,7 @@ public class PowerTorch extends Power implements PowerRightClick {
                             Location position = changedBlocks.keySet().toArray(new Location[0])[index];
                             changedBlocks.remove(position);
                             Block c = position.getBlock();
-                            position.getWorld().playEffect(position, Effect.STEP_SOUND, c.getTypeId());
+                            position.getWorld().playEffect(position, Effect.STEP_SOUND, c.getTypeId());//TODO:这特么也是声音。。
                             c.removeMetadata("RPGItems.Torch", RPGItems.plugin);
                             c.setTypeId((int) (data & 0xFFFF));
                             c.setData((byte) (data >> 16));

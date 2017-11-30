@@ -158,7 +158,7 @@ public class PowerDeflect extends Power implements PowerHitTaken, PowerRightClic
                             && (p instanceof SmallFireball || p instanceof LargeFireball || p instanceof Arrow)) {
                     event.setCancelled(true);
                     p.remove();
-                    target.getLocation().getWorld().playSound(target.getLocation(), Sound.ITEM_SHIELD_BLOCK, 1.0f, 3.0f);
+                    target.getLocation().getWorld().playSound(target.getLocation(), Sound.ITEM_SHIELD_BLOCK, 1.0f, 3.0f);//TODO:Deflect
                     Bukkit.getScheduler().runTaskLater(RPGItems.plugin, () -> {
                         Projectile t = target.launchProjectile(p.getClass());
                         if (p instanceof TippedArrow) {

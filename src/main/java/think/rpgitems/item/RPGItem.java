@@ -48,6 +48,7 @@ import think.rpgitems.data.RPGMetadata;
 import think.rpgitems.power.Power;
 import think.rpgitems.power.PowerLoreFilter;
 import think.rpgitems.power.PowerUnbreakable;
+import think.rpgitems.power.sound.SoundTrigger;
 import think.rpgitems.power.types.*;
 import think.rpgitems.support.WorldGuard;
 import think.rpgitems.utils.ReflectionUtil;
@@ -87,6 +88,7 @@ public class RPGItem {
     public int hitCost = 1;
     public boolean hitCostByDamage = false;
     public DamageMode damageMode = DamageMode.FIXED;
+    private SoundTrigger soundTrigger;
     private ItemStack item;
     private ItemMeta localeMeta;
     private int id;
@@ -121,6 +123,7 @@ public class RPGItem {
         encodedID = getMCEncodedID(id);
         item = new ItemStack(Material.WOOD_SWORD);
         hasBar = true;
+        soundTrigger = new SoundTrigger();
 
         displayName = item.getType().toString();
 

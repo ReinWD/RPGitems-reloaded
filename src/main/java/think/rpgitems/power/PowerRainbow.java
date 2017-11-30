@@ -75,7 +75,7 @@ public class PowerRainbow extends Power implements PowerRightClick {
         if (!item.checkPermission(player, true)) return;
         if (!checkCooldown(player, cooldownTime, true)) return;
         if (!item.consumeDurability(stack, consumption)) return;
-        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1.0f, 1.0f);
+        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1.0f, 1.0f);//TODO:Rainbow
         final ArrayList<FallingBlock> blocks = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             FallingBlock block;
@@ -101,7 +101,7 @@ public class PowerRainbow extends Power implements PowerRightClick {
                     if (random.nextBoolean()) {
                         Block b = loc.getBlock();
                         if (b.getType() == (isFire ? Material.FIRE : Material.WOOL)) {
-                            loc.getWorld().playEffect(loc, Effect.STEP_SOUND, isFire ? Material.FIRE : Material.WOOL, b.getData());
+                            loc.getWorld().playEffect(loc, Effect.STEP_SOUND, isFire ? Material.FIRE : Material.WOOL, b.getData());//TODO:Rainbow
                             b.setType(Material.AIR);
                         }
                         l.remove();

@@ -76,7 +76,7 @@ public class PowerFire extends Power implements PowerRightClick {
         if (!item.checkPermission(player, true)) return;
         if (!checkCooldown(player, cooldownTime, true)) return;
         if (!item.consumeDurability(stack, consumption)) return;
-        player.playSound(player.getLocation(), Sound.ITEM_FLINTANDSTEEL_USE, 1.0f, 1.2f);
+        player.playSound(player.getLocation(), Sound.ITEM_FLINTANDSTEEL_USE, 1.0f, 1.2f);//TODO:Fire
         final List<Block> fireblocks = new ArrayList<>();
         final FallingBlock block = player.getWorld().spawnFallingBlock(player.getLocation().add(0, 1.8, 0), new MaterialData(Material.FIRE));
         block.setVelocity(player.getLocation().getDirection().multiply(2d));

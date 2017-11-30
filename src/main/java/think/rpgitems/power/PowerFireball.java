@@ -51,7 +51,7 @@ public class PowerFireball extends Power implements PowerRightClick {
         if (!item.checkPermission(player, true)) return;
         if (!checkCooldown(player, cooldownTime, true)) return;
         if (!item.consumeDurability(stack, consumption)) return;
-        player.playSound(player.getLocation(), Sound.ENTITY_GHAST_SHOOT, 1.0f, 1.0f);
+        player.playSound(player.getLocation(), Sound.ENTITY_GHAST_SHOOT, 1.0f, 1.0f);//TODO:FireBall
         Events.rpgProjectiles.put(player.launchProjectile(SmallFireball.class).getEntityId(), item.getID());
     }
 
