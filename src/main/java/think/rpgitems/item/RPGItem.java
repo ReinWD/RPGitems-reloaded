@@ -31,6 +31,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -101,6 +102,7 @@ public class RPGItem {
     private String loreText = "";
     private String type = RPGItems.plugin.getConfig().getString("defaults.sword", "Sword");
     private String hand = RPGItems.plugin.getConfig().getString("defaults.hand", "One handed");
+    private ArrayList<PowerDig> powerDig = new ArrayList<>();
     private ArrayList<PowerLeftClick> powerLeftClick = new ArrayList<>();
     private ArrayList<PowerRightClick> powerRightClick = new ArrayList<>();
     private ArrayList<PowerProjectileHit> powerProjectileHit = new ArrayList<>();
@@ -465,6 +467,18 @@ public class RPGItem {
                 }
             }
             Bukkit.addRecipe(shapedRecipe);
+        }
+    }
+
+    public void breakBlock(BlockBreakEvent e, Player player, ItemStack i){
+        for (PowerDig power :
+                powerDig) {
+            if (!WorldGuard.canUsePowerNow(player, power)) continue;
+            power.onDestroyBlock(e,player,i);
+        }
+        if (getDurability(i) <= 0) {
+            i.setAmount(0);
+            i.setType(Material.AIR);
         }
     }
 
@@ -1101,6 +1115,9 @@ public class RPGItem {
         }
         if (power instanceof PowerTick) {
             powerTick.add((PowerTick) power);
+        }
+        if (power instanceof PowerDig){
+            powerDig.add((PowerDig) power);
         }
         if (update)
             rebuild();

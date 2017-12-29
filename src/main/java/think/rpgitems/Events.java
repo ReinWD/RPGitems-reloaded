@@ -46,8 +46,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import think.rpgitems.item.ItemManager;
 import think.rpgitems.item.LocaleInventory;
 import think.rpgitems.item.RPGItem;
+import think.rpgitems.power.Power;
 import think.rpgitems.power.PowerRanged;
 import think.rpgitems.power.PowerRangedOnly;
+import think.rpgitems.power.PowerTreasure;
 import think.rpgitems.support.WGHandler;
 import think.rpgitems.support.WorldGuard;
 
@@ -169,6 +171,9 @@ public class Events implements Listener {
                 player.getInventory().setItemInMainHand(null);
             } else {
                 player.getInventory().setItemInMainHand(item);
+                if (rItem.hasPower(PowerTreasure.class)){
+                    rItem.breakBlock(e,player,item);
+                }
             }
         }
 
